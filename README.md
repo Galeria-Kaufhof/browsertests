@@ -9,5 +9,5 @@
 
 * `npm install`
 * `./bin/create_keys.sh`
-* `gulp --target='http://www.galeria-kaufhof.de'`
-* open https://localhost:9192/browsertests in your browser
+* `gulp --target='https://www.galeria-kaufhof.de'`
+* open [https://localhost:8182/browsertests](https://localhost:8182/browsertests) in your browser
