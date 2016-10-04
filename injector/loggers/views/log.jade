@@ -1,0 +1,58 @@
+mixin truncate(val, maxlength)
+  if val.length > maxlength || 30
+    abbr(title=val)= val.substr(0, maxlength || 30) + "\u2026"
+  else
+    span= val
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Browsertests test results
+    // Bootstrap
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  body
+    .container
+      h1 Test results
+
+      form(action="log/delete" method="post")
+        input(type="submit" value="Delete")
+
+      table.table.table-condensed
+        thead
+          tr
+            th Server-Date
+            th Test
+            th Status
+            th Browser ID
+            th URL
+        tbody
+          each entry in log
+            tr(class={"test_error": "danger", "test_success": "success", "test_start": "info", "browser_error": "warning"}[entry.state])
+              td= moment(entry.serverDate).format("YYYY-MM-DD HH:mm:ss")
+              td
+                if entry.test
+                  = entry.test
+                  if entry.testRunId
+                    = " - "
+                    +truncate(entry.testRunId, 6)
+                else
+                  | -
+                td
+                  if entry.state == "test_error"
+                    a(href="snapshots/" + entry.testRunId + "." + entry.state + ".html" target="_blank" title=entry.message)= entry.state
+                  else
+                    span(title=entry.message)= entry.state
+                  if entry.lastCheckpoint
+                    = " (" + entry.lastCheckpoint + ")"
+              td
+                = "" + entry.browserName + " (" + entry.browserVersion + ") - "
+                +truncate(entry.browserId + "\n(" + entry.userAgent +  ")", 6)
+              td= entry.url
+
+    #bottom

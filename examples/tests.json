@@ -1,0 +1,21 @@
+{
+  "tests": {
+    "Basic MVP": {
+      "load": "./examples/tests/basics.js",
+      "browsers": ".*",
+      "cronSchedule": "10 * * * *"
+    }
+  },
+  "reporters": [
+    {
+      "type": "ajax",
+      "options": {
+        "url": "./log"
+      }
+    },
+    {
+      "type": "snapshot",
+      "baseUrl": "./snapshots"
+    }
+  ]
+}
