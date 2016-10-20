@@ -3,7 +3,7 @@ var mkdirp = require('mkdirp');
 var fs = require('fs');
 
 module.exports = function (options) {
-  var dir = options.dir || './shapshots'
+  var dir = options.dir || './snapshots';
 
   var res = express.Router();
 
