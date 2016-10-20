@@ -2,19 +2,20 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
-  <link href="css/browsertests.css" rel="stylesheet" type="text/css">
-  <script src="vendor/require.js" type="application/javascript"></script>
-  <script src="browsertests.js" type="application/javascript"></script>
-  <script>
-    define('browsertestsConfig', {
-      qUrl: "vendor/q.js",
-      jQueryUrl: "vendor/jquery.min.js",
-      bowserUrl: "vendor/bowser.min.js",
-      laterUrl: "vendor/later.js",
-      testUrl: "./tests.json"
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<link href="css/browsertests.css" rel="stylesheet" type="text/css">
+	<script src="vendor/require.js" type="application/javascript"></script>
+	<script src="browsertests.js" type="application/javascript"></script>
+	<script>
+    requirejs.config({
+      paths: {
+        q: "vendor/q",
+        jquery: "vendor/jquery.min",
+        bowser: "vendor/bowser.min",
+        later: "vendor/later",
+      }
     });
-    require(['browsertests']);
+    require(['browsertests-frame']);
   </script>
 </head>
 
