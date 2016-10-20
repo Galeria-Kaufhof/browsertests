@@ -5,7 +5,7 @@ var browserTester = require('./index.js');
 
 gulp.task('run', [], function () {
   browserTester({
-    target: argv.target || 'https://www.galeria-kaufhof.de',
+    target: argv.target || 'https://www.galeria-kaufhof.de/',
     examples: true,
     elasticsearchHost: argv.elasticsearchHost
   });

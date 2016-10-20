@@ -6,7 +6,7 @@ module.exports = function (target, options) {
 
   function replaceUrls(data) {
     if (typeof data === "string") {
-      data = data.replace(new RegExp(options.target, "g"), "/");
+      data = data.replace(new RegExp(target, "g"), "/");
     }
     return data;
   }
@@ -17,6 +17,7 @@ module.exports = function (target, options) {
       var _writeHead = response.writeHead;
       response.writeHead = function (code, headers) {
         response.setHeader('location', replaceUrls(proxyRes.headers['location']));
+        console.log(proxyRes.headers['location'], response.getHeader('location'));
         _writeHead.apply(this, arguments);
       };
     };
