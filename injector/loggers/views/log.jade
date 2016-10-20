@@ -33,7 +33,7 @@ html(lang='en')
             th URL
         tbody
           each entry in log
-            tr(class={"test_error": "danger", "test_success": "success", "test_start": "info", "browser_error": "warning"}[entry.state])
+            tr(class={"test:failure": "danger", "test:success": "success", "test:start": "info", "system:error": "warning"}[entry.state])
               td= moment(entry.serverDate).format("YYYY-MM-DD HH:mm:ss")
               td
                 if entry.test
@@ -44,10 +44,10 @@ html(lang='en')
                 else
                   | -
                 td
-                  if entry.state == "test_error"
-                    a(href="snapshots/" + entry.testRunId + "." + entry.state + ".html" target="_blank" title=entry.message)= entry.state
+                  if entry.state == "test:failure"
+                    a(href="snapshots/" + entry.testRunId + "." + entry.state + ".html" target="_blank" title=entry.msg)= entry.state
                   else
-                    span(title=entry.message)= entry.state
+                    span(title=entry.msg)= entry.state
                   if entry.lastCheckpoint
                     = " (" + entry.lastCheckpoint + ")"
               td
