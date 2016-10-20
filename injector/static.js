@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 var express = require('express');
 
 module.exports = function (options) {
@@ -16,4 +18,4 @@ module.exports = function (options) {
   }
 
   return res;
-}
+};

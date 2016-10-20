@@ -1,4 +1,4 @@
-/* globals define, require, window, later */
+/* eslint-env browser, amd, jquery */
 
 if (!window.console) {
   window.console = {

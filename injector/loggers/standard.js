@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 var express = require('express');
 var moment = require('moment');
 
@@ -28,4 +30,4 @@ module.exports = function (options) {
   });
 
   return res;
-}
+};

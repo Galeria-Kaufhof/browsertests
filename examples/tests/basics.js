@@ -1,6 +1,6 @@
-/* globals define */
+/* eslint-env browser, amd, jquery */
 
-define(["browsertests", "jquery"], function (browsertests) {
+define(["browsertests"], function (browsertests) {
 
   return function () {
 

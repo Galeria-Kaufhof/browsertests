@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 var express = require('express');
 var mkdirp = require('mkdirp');
 var fs = require('fs');
@@ -31,9 +33,9 @@ module.exports = function (options) {
           options.eventEmitter.emit(msg.state, msg);
           response.send("ok");
         });
-      };
+      }
     });
   });
 
   return res;
-}
+};

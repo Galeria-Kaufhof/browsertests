@@ -1,5 +1,4 @@
-/* globals define, require, window, jQuery */
-
+/* eslint-env browser, amd, jquery */
 
 define('browsertests-frame', ['browsertests-base', 'q', 'bowser', 'jquery'], function (base, Q, bowser) {
 

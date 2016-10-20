@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 // Elastic search reporter
 // Havily inspired by https://github.com/macbre/phantomas/blob/devel/reporters/elasticsearch.js
 
@@ -85,7 +87,7 @@ function store(elasticClient, config, data) {
   return ensureIndex(elasticClient, config, indexName).then(function () {
     return storeDocument(elasticClient, config, indexName, data);
   });
-};
+}
 
 module.exports = function (options) {
 
@@ -93,16 +95,15 @@ module.exports = function (options) {
     var config = {
       documentType: options.elasticsearchDocumentType || 'browsertests',
       indexPattern: options.elasticsearchIndexPattern || 'browsertests-{year}.{month}'
-    }
+    };
     var elasticClient = new elasticsearch.Client({ host: options.elasticsearchHost });
 
     options.eventEmitter.on('log', function (msg) {
-      store(elasticClient, msg).catch(function (err) {
+      store(elasticClient, config, msg).catch(function (err) {
         console.log("Elasticsearch error: ", err);
-        response.status(500).send(err);
       });
     });
 
-  };
+  }
 
 };
