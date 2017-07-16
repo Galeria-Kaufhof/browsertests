@@ -11,7 +11,7 @@ gulp.task('run', [], function () {
     examples: true,
     elasticsearchHost: argv.elasticsearchHost
   });
-  console.log('Proxy running on port 8181 (http) and 8182 (https).')
+  console.log('Proxy running on port 8181 (http) and 8182 (https).');
 });
 
 gulp.task('default', ['run']);

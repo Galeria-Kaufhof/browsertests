@@ -16,6 +16,7 @@ define(["browsertests"], function (browsertests) {
         }, {retry: true});
       })
       .then(browsertests.waitForDOMContentLoaded)
+
       .then(function (container) {
         browsertests.checkpoint("ADS");
         return browsertests.execute(function () {
@@ -23,9 +24,10 @@ define(["browsertests"], function (browsertests) {
         }, {retry: true});
       })
       .then(browsertests.waitForDOMContentLoaded)
+
       .then(function (container) {
         browsertests.checkpoint("Add to Cart");
-        return browsertests.execute(function () { // Layer (no "ready")
+        return browsertests.execute(function () { // Layer (no "DOMContentLoaded")
           container.find('.ev-product__orderbutton.gk-button--enabled')[0].click();
         }, {retry: true});
       })
@@ -36,6 +38,7 @@ define(["browsertests"], function (browsertests) {
         }, {retry: true});
       })
       .then(browsertests.waitForDOMContentLoaded)
+
       .then(function (container) {
         browsertests.checkpoint("Checkout");
         return browsertests.execute(function () {
