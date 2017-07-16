@@ -21,11 +21,16 @@ define('browsertests-base', ['q', 'later'], function (Q) {
   }
 
   function emit(eventType, data) {
-    return document.dispatchEvent(new CustomEvent('bt:' + eventType, { detail: data }));
+    return document.dispatchEvent(new CustomEvent('bt:' + eventType, { detail: data })) &&
+      document.dispatchEvent(new CustomEvent('bt:any', { detail: { originalEventType: eventType, originalEventData: data }}));
   }
 
   function on(eventType, listener) {
     return document.addEventListener('bt:' + eventType, function (e) { listener(e.detail); });
+  }
+
+  function onAnyEvent(listener) {
+    return document.addEventListener('bt:any', function (e) { listener(e.detail.originalEventType, e.detail.originalEventData); });
   }
 
   var tests = {}; // Currently defined tests
@@ -188,7 +193,8 @@ define('browsertests-base', ['q', 'later'], function (Q) {
     addTest: addTest,
     tests: tests,
     emit: emit,
-    on: on
+    on: on,
+    onAnyEvent: onAnyEvent
   };
 
 });
