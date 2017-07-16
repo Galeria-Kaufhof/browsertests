@@ -73,9 +73,9 @@ define('browsertests-frame', ['browsertests-base', 'q', 'bowser', 'jquery'], fun
           }
         ));
       } else if (reporter.type === 'require') {
-        require([reporter.load]), function (customReporter) {
+        require([reporter.load], function (customReporter) {
           customReporter(data, jQuery.extend({}, globalOptions, reporter.options));
-        };
+        });
       }
     });
   }
